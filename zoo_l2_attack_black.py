@@ -254,7 +254,7 @@ def attack(inputs, targets, model, targeted, use_log, use_tanh, solver, device):
       attack = attack.reshape(1,28,28)
     r.append(attack)
     print(np.asarray(r, dtype="object").shape)
-  return np.asarray(r, dtype="object")
+  return np.asarray(r, dtype="object").astype(np.float32)
 
 if __name__=='__main__':
   np.random.seed(42)
