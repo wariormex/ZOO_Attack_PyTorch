@@ -248,9 +248,10 @@ def attack(inputs, targets, model, targeted, use_log, use_tanh, solver, device):
   # run 1 image at a time, minibatches used for gradient evaluation
   for i in range(len(inputs)):
     print('tick',i+1)
+    print(attack)
     attack,score=l2_attack(np.expand_dims(inputs[i],0), np.expand_dims(targets[i],0), model, targeted, use_log, use_tanh, solver, device)
     r.append(attack)
-  return np.array(r)
+  return np.asarray(r, dtype="object")
 
 if __name__=='__main__':
   np.random.seed(42)
