@@ -250,6 +250,8 @@ def attack(inputs, targets, model, targeted, use_log, use_tanh, solver, device):
     print('tick',i+1)
     attack,score=l2_attack(np.expand_dims(inputs[i],0), np.expand_dims(targets[i],0), model, targeted, use_log, use_tanh, solver, device)
     print(attack.shape)
+    if attack.ndim > 3:
+      attack = attack.reshape(1,28,28)
     r.append(attack)
     print(np.asarray(r, dtype="object").shape)
   return np.asarray(r, dtype="object")
